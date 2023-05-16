@@ -1,61 +1,42 @@
-import LinearRegressionModel as LRM
 import math
 
-# To use, go to LinearRegressionModel.py and input your points in x[] and y[].
-# Save, and come back here and input your new dependent variables below:
-
-print("\n")
-
-def getEstimatedY():
+def getEstimatedY(xList, alpha, beta):
     yEstimates = []
-    for i in range(len(LRM.xList)):
-        yEstimates.append(LRM.alpha + (LRM.beta * LRM.xList[i]))
+    for i in range(len(xList)):
+        yEstimates.append(alpha + (beta * xList[i]))
 
     return yEstimates
 
-def getTSS():
+def getTSS(yList, yBar):
     TSS = 0
-    for i in range(len(LRM.yList)):
-        TSS += math.pow((LRM.yList[i] - LRM.yBar), 2)
+    for i in range(len(yList)):
+        TSS += math.pow((yList[i] - yBar), 2)
     
     return TSS
 
-def getRSS():
+def getRSS(yList, yEstimates):
     RSS = 0
     yEstimates = getEstimatedY()
-    for i in range(len(LRM.yList)):
-        RSS += math.pow((LRM.yList[i] - yEstimates[i]), 2)
+    for i in range(len(yList)):
+        RSS += math.pow((yList[i] - yEstimates[i]), 2)
     
     return RSS
 
-def getResiduals():
+def getResiduals(yList, yEstimates):
     residuals = []
     yEstimates = getEstimatedY()
-    for i in range(len(LRM.yList)):
-        residuals.append(LRM.yList[i] - yEstimates[i])
+    for i in range(len(yList)):
+        residuals.append(yList[i] - yEstimates[i])
     
     return residuals
 
-def getESS():
+def getESS(yList, yEstimates, yBar):
     ESS = 0
     yEstimates = getEstimatedY()
-    for i in range(len(LRM.yList)):
-        ESS += math.pow((yEstimates[i] - LRM.yBar), 2)
+    for i in range(len(yList)):
+        ESS += math.pow((yEstimates[i] - yBar), 2)
     
     return ESS
 
 def getRSquared():
     return (getESS() / getTSS())
-
-print("--------------------")
-print("TSS is n * the sample variance of Y.")
-print("RSS is n * the sample variance of residuals.")
-print("ESS is n * the sample variance of the fitted values.")
-print("R Squared = correlation squared.")
-print("Note: Read notes if asked about these. On BlackBoard.")
-print("--------------------")
-print("TSS: " + (str)(getTSS()))
-print("RSS: " + (str)(getRSS()))
-print("ESS: " + (str)(getESS()))
-print("R Squared: " + (str)(getRSquared()))
-print("--------------------")
