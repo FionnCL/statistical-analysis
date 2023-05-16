@@ -9,6 +9,6 @@ def getValues(dependentVariables, alpha, beta):
     predictedValues = []
     for i in range(len(dependentVariables)):
         currentPredictedVariable = alpha + (beta * dependentVariables[i])
-        predictedValues.append(currentPredictedVariable)
+        predictedValues.append(round(currentPredictedVariable, 4))
 
     return predictedValues

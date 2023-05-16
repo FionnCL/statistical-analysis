@@ -3,7 +3,7 @@ import math
 def getEstimatedY(xList, alpha, beta):
     yEstimates = []
     for i in range(len(xList)):
-        yEstimates.append(alpha + (beta * xList[i]))
+        yEstimates.append(round(alpha + (beta * xList[i]), 4))
 
     return yEstimates
 
@@ -16,7 +16,6 @@ def getTSS(yList, yBar):
 
 def getRSS(yList, yEstimates):
     RSS = 0
-    yEstimates = getEstimatedY()
     for i in range(len(yList)):
         RSS += math.pow((yList[i] - yEstimates[i]), 2)
     
@@ -24,15 +23,13 @@ def getRSS(yList, yEstimates):
 
 def getResiduals(yList, yEstimates):
     residuals = []
-    yEstimates = getEstimatedY()
     for i in range(len(yList)):
-        residuals.append(yList[i] - yEstimates[i])
+        residuals.append(round(yList[i] - yEstimates[i], 4))
     
     return residuals
 
 def getESS(yList, yEstimates, yBar):
     ESS = 0
-    yEstimates = getEstimatedY()
     for i in range(len(yList)):
         ESS += math.pow((yEstimates[i] - yBar), 2)
     

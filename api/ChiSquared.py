@@ -16,7 +16,7 @@ def getExpectedFrequencies(matrix):
     for i in range(len(matrix)):
         row = []
         for j in range(len(matrix[i])):
-            row.append((((getRowTotal(matrix[i]) * getColumnTotal(j, matrix)) / total)))
+            row.append(round((((getRowTotal(matrix[i]) * getColumnTotal(j, matrix)) / total)), 4))
         expectedFrequencies[i] = row
 
     return expectedFrequencies
@@ -48,14 +48,4 @@ def getChiSquared(observedFrequencies, expectedFrequencies):
     for i in range(len(expectedFrequencies)):
         for j in range(len(expectedFrequencies[i])):
             summation += (math.pow((observedFrequencies[i][j] - expectedFrequencies[i][j]), 2)) / expectedFrequencies[i][j]
-    return summation
-
-1.372655
-2.87
-
-expectedFrequencies = getExpectedFrequencies(observedFrequencies)
-chiSquared = getChiSquared(observedFrequencies, expectedFrequencies)
-
-print("Observed Frequencies:\t" + (str)(observedFrequencies))
-print("Expected Frequencies:\t" + (str)(expectedFrequencies))
-print("Chi Squared:\t" + (str)(chiSquared))
+    return round(summation, 4)

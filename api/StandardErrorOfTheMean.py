@@ -28,8 +28,8 @@ def getXBar(xList):
 
     return round(xBar / len(xList), 2)
 
-print("SE:\t\t" + (str)(getSE(varianceEstimate, sampleSize)))
-# print("SE(FPC):\t" + (str)(geSEWithFPC(varianceEstimate, sampleSize, populationSize)))
+# print("SE:\t\t" + (str)(getSE(varianceEstimate, sampleSize)))
+# # print("SE(FPC):\t" + (str)(geSEWithFPC(varianceEstimate, sampleSize, populationSize)))
 
-# uncomment if you need variance using points
+# # uncomment if you need variance using points
 # print("SE(FPC):\t" + (str)(getVarianceSquared(xList, xBar)))

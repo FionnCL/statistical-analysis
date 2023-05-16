@@ -79,33 +79,3 @@ def getCorrelation(xList, yList, xBar, yBar):
     denominator2 = math.sqrt(denominator2)
 
     return numerator / (denominator1 * denominator2)
-
-# bars = getMeans(xList, yList) #returns tuple
-# xBar = bars[0]
-# yBar = bars[1]
-# beta = getBeta(xList, yList, bars[0], bars[1])
-# alpha = getAlpha(xBar, yBar, beta)
-# populationCovariance = getPopulationCovariance(xList, yList, bars[0], bars[1])
-# sampleCovariance = getSampleCovariance(xList, yList, bars[0], bars[1])
-# correlation = getCorrelation(xList, yList, bars[0], bars[1])
-# popVarX = getPopulationVariance(xList, xBar)
-# popVarY = getPopulationVariance(yList, yBar)
-# sampleVarX = getSampleVariance(xList, xBar)
-# sampleVarY = getSampleVariance(yList, yBar)
-
-# print("--------------------")
-# print("X-BAR\t\t=\t\t"+(str)(xBar))
-# print("Y-BAR\t\t=\t\t"+(str)(yBar))
-# print("ALPHA\t\t=\t\t"+(str)(alpha))
-# print("BETA\t\t=\t\t"+(str)(beta))
-# print("COR\t\t=\t\t"+(str)(correlation))
-# print("--------------------")
-# print("POPCOV\t\t=\t\t"+(str)(populationCovariance))
-# # print("SAMPCOV\t\t=\t\t"+(str)(sampleCovariance))
-# # print("--------------------")
-# # print("POPVAR(X)\t=\t\t"+(str)(popVarX))
-# # print("POPVAR(Y)\t=\t\t"+(str)(popVarY))
-# print("--------------------")
-# print("SAMPVAR(X)\t=\t\t"+(str)(sampleVarX))
-# print("SAMPVAR(Y)\t=\t\t"+(str)(sampleVarY))
-# print("--------------------")
