@@ -1,0 +1,29 @@
+.container {
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+
+    margin: 16px;
+    padding: 0 16px;
+
+    width: fit-content;
+}
+
+.lrm-form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    margin: 0 16px;
+}
+
+.lrm-form-input {
+    margin: 8px 0;
+    width: 270px;
+    height: 4rem;
+    resize: none;
+}
+
+.lrm-form-button {
+    width: fit-content;
+    margin: 0 0 8px;
+}

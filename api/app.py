@@ -159,23 +159,6 @@ class sampleSize(Resource):
             "sampleSize": SS.getSampleSize(maxWidthOfCI, variance, zScore)
         }
     
-# class standardError(Resource):
-#     def post(self):
-#         parser = reqparse.RequestParser()
-#         parser.add_argument('littleN', required = True)
-#         parser.add_argument('bigN', required = True)
-#         args = parser.parse_args()
-
-#         littleN = args['littleN']
-#         bigN = args['bigN']
-
-#         return {
-#             "orderedNoRep": NoS.orderedNoRep(littleN, bigN),
-#             "unorderedNoRep": NoS.unorderedNoRep(littleN, bigN),
-#             "orderedRep": NoS.orderedRep(littleN, bigN),
-#             "unorderedRep": NoS.unorderedRep(littleN, bigN),
-#         }
-    
 # Add Endpoints
 api.add_resource(sampleSizeCombinatorics, '/sampling/sample-size-combinatorics')
 api.add_resource(predictedValues, '/lrm/predicted-values')
@@ -183,7 +166,6 @@ api.add_resource(model, '/lrm/model')
 api.add_resource(residuals, '/lrm/residuals')
 api.add_resource(chiSquared, '/hypothesis-testing/chi-squared')
 api.add_resource(sampleSize, '/estimation/sample-size')
-#api.add_resource(standardError, '/estimation/standard-error')
 
 # runs program if running from this file
 if __name__ == '__main__':
