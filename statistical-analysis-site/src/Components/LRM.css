@@ -27,3 +27,16 @@
     width: fit-content;
     margin: 0 0 8px;
 }
+
+.results-flex {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.results-flex > p {
+    margin: 1em;
+}
+
+.point-results-flex {
+    display: flex;
+}

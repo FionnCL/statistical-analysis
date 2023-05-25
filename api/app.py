@@ -66,7 +66,7 @@ class model(Resource):
         alpha = LRM.getAlpha(means[0], means[1], beta)
         return {
             "xBar": round(means[0], 4),
-            "xBar": round(means[1], 4),
+            "yBar": round(means[1], 4),
             "beta": round(beta, 4),
             "alpha": round(alpha, 4),
             "correlation": round(LRM.getSampleCovariance(xList, yList, means[0], means[1]), 4),
