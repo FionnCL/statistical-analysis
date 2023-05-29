@@ -1,22 +1,17 @@
-import {
+import 
+{
     Chart as ChartJS,
     LinearScale,
     PointElement,
     LineElement,
     Tooltip,
     Legend,
-  } from 'chart.js';
+  } 
+  from 'chart.js';
+  
   import { Scatter } from 'react-chartjs-2';
 
 import './LRM.css';
-
-export const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  };
 
 export default function LRM(){
     ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
@@ -25,15 +20,24 @@ export default function LRM(){
 
     const testX = [0.56,0.23,1.56,0.07,0.13,1.72,0.46,1.27,0.69,0.45,1.22,0.36,0.40,0.11,0.56];
     const testY = [2.18,-0.66,0.21,-2.51,-2.63,1.27,-0.17,0.78,0.02,-0.63,0.07,0.46,-0.04,-3.57,1.63];
-    const data = {
+
+    let pairs = testX.map((val, index) => {
+        return {
+            x: val, 
+            y: testY[index]
+        }
+    });
+
+    let data = {
         datasets: [
             {
-              label: 'Linear Regression Model',
-              data: { testX, testY },
-              backgroundColor: 'rgba(255, 99, 132, 1)',
-            },
+                label: 'Points',
+                data: pairs,
+                backgroundColor: 'rgba(99, 132, 255, 1)',
+            }
           ],
         };
+        
     let getResults = ((results) => {
         return(
             <div className="container">
@@ -125,7 +129,7 @@ export default function LRM(){
                 </div>
                 {getResults(results)}
             </div>
-            <Scatter options={options} data={data}/>
+            <Scatter data={data}/>
         </div>
     );
 }
