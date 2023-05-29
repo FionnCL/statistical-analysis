@@ -72,20 +72,20 @@ export default function LRM(){
         "sampleVarianceY": 1.0
     }
     async function getInfo(endpoint, data){
-        // explanatory = document.getElementById("explanatory").value;
-        // response = document.getElementById("response").value;
-        // if(!stringIsValid(explanatory) && !stringIsValid(response)) { return "Invalid string."; }
-        // const res = await fetch('http://fionncl.pythonanywhere.com' + endpoint, {
-        //     method: "POST",
-        //     mode: "no-cors",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify(data)
-        // })
+        explanatory = document.getElementById("explanatory").value;
+        response = document.getElementById("response").value;
+        if(!stringIsValid(explanatory) && !stringIsValid(response)) { return "Invalid string."; }
+        const res = await fetch('http://fionncl.pythonanywhere.com' + endpoint, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
 
-        // console.log(res.json);
-        // return res.json();
+        console.log(res.json);
+        return res.json();
     }
 
     function stringIsValid(string) {
@@ -98,20 +98,21 @@ export default function LRM(){
     }
 
     return(
-        <div>
+        <div className="col">
             <div className="point-results-flex">
                 <div className="container">
-                    {/* title can be props */}
                     <h1>LRM Points</h1>
-                    {/* These forms can be props. */}
                     <form className="lrm-form">
-                        <label>Explanatory Variables:</label>
-                        <textarea id="explanatory" className="lrm-form-input" type="text"/>
-
-                        <label>Response Variables:</label>
-                        <textarea id="response" className="lrm-form-input" type="text"/>
-
-                        <button 
+                        <div className='form-input'>
+                            <label>Explanatory Variables:</label>
+                            <textarea id="explanatory" className="lrm-form-input" type="text"/>
+                        </div>
+                        <div className='form-input'>
+                            <label>Response Variables:</label>
+                            <textarea id="response" className="lrm-form-input" type="text"/>
+                        </div>
+                    </form>
+                    <button 
                         className="lrm-form-button" 
                         type="submit" 
                         onClick={
@@ -124,11 +125,10 @@ export default function LRM(){
                             )
                         }>
                             Submit
-                        </button>
-                    </form>
+                    </button>
                 </div>
-                {getResults(results)}
             </div>
+            {getResults(results)}
             <Scatter data={data}/>
         </div>
     );
