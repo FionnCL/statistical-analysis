@@ -48,10 +48,6 @@
     margin: 1em;
 }
 
-.point-results-flex {
-    display: flex;
-}
-
 .form-input {
     display: flex;
     flex-direction: column;

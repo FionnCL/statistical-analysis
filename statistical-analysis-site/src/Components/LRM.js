@@ -99,34 +99,32 @@ export default function LRM(){
 
     return(
         <div className="col">
-            <div className="point-results-flex">
-                <div className="container">
-                    <h1>LRM Points</h1>
-                    <form className="lrm-form">
-                        <div className='form-input'>
-                            <label>Explanatory Variables:</label>
-                            <textarea id="explanatory" className="lrm-form-input" type="text"/>
-                        </div>
-                        <div className='form-input'>
-                            <label>Response Variables:</label>
-                            <textarea id="response" className="lrm-form-input" type="text"/>
-                        </div>
-                    </form>
-                    <button 
-                        className="lrm-form-button" 
-                        type="submit" 
-                        onClick={
-                            getInfo(
-                                "/lrm/model", 
-                                { 
-                                    "xList": explanatory, 
-                                    "yList": response
-                                }
-                            )
-                        }>
-                            Submit
-                    </button>
-                </div>
+            <div className="container">
+                <h1>LRM Points</h1>
+                <form className="lrm-form">
+                    <div className='form-input'>
+                        <label>Explanatory Variables:</label>
+                        <textarea id="explanatory" className="lrm-form-input" type="text"/>
+                    </div>
+                    <div className='form-input'>
+                        <label>Response Variables:</label>
+                        <textarea id="response" className="lrm-form-input" type="text"/>
+                    </div>
+                </form>
+                <button 
+                    className="lrm-form-button" 
+                    type="submit" 
+                    onClick={
+                        getInfo(
+                            "/lrm/model", 
+                            { 
+                                "xList": explanatory, 
+                                "yList": response
+                            }
+                        )
+                    }>
+                        Submit
+                </button>
             </div>
             {getResults(results)}
             <Scatter data={data}/>
