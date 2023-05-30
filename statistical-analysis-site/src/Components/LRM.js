@@ -40,20 +40,18 @@ export default function LRM(){
         
     let getResults = ((results) => {
         return(
-            <div className="container">
-                    <div className="results-flex">
-                        <p>x̄:&nbsp;{results.xBar}</p>
-                        <p>ȳ:&nbsp;{results.yBar}</p>
-                        <p>β:&nbsp;{results.beta}</p>
-                        <p>α:&nbsp;{results.alpha}</p>
-                        <p>ρ:&nbsp;{results.correlation}</p>
-                        <p>Population Covariance:&nbsp;{results.populationCovariance}</p>
-                        <p>Sample Covariance:&nbsp;{results.sampleCovariance}</p>
-                        <p>Population Variance(X):&nbsp;{results.populationVarianceX}</p>
-                        <p>Population Variance(Y):&nbsp;{results.populationVarianceY}</p>
-                        <p>Sample Variance(X):&nbsp;{results.sampleVarianceX}</p>
-                        <p>Sample Variance(Y):&nbsp;{results.sampleVarianceY}</p>
-                    </div>
+            <div className="container results">
+                <p>x̄:&nbsp;{results.xBar}</p>
+                <p>ȳ:&nbsp;{results.yBar}</p>
+                <p>β:&nbsp;{results.beta}</p>
+                <p>α:&nbsp;{results.alpha}</p>
+                <p>ρ:&nbsp;{results.correlation}</p>
+                <p>Population Covariance:&nbsp;{results.populationCovariance}</p>
+                <p>Sample Covariance:&nbsp;{results.sampleCovariance}</p>
+                <p>Population Variance(X):&nbsp;{results.populationVarianceX}</p>
+                <p>Population Variance(Y):&nbsp;{results.populationVarianceY}</p>
+                <p>Sample Variance(X):&nbsp;{results.sampleVarianceX}</p>
+                <p>Sample Variance(Y):&nbsp;{results.sampleVarianceY}</p>
             </div>
         );
     });

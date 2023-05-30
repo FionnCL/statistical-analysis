@@ -14,8 +14,10 @@
 
     margin: 16px;
     padding: 0 16px;
+    display: flex;
+    flex-wrap: wrap;
 
-    width: fit-content;
+    width: 640px;
 }
 
 .lrm-form {
@@ -44,7 +46,7 @@
     justify-content: space-evenly;
 }
 
-.results-flex > p {
+.results > p {
     margin: 1em;
 }
 
