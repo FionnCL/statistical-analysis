@@ -18,7 +18,6 @@ export default function LRM(){
     ChartJS.register(LinearScale, PointElement, LineElement, Tooltip, Legend);
     let [explanatory, setExplanatory] = useState("");
     let [response, setResponse] = useState("");
-    let [results, setResults] = useState({});
 
     const testX = [0.56,0.23,1.56,0.07,0.13,1.72,0.46,1.27,0.69,0.45,1.22,0.36,0.40,0.11,0.56];
     const testY = [2.18,-0.66,0.21,-2.51,-2.63,1.27,-0.17,0.78,0.02,-0.63,0.07,0.46,-0.04,-3.57,1.63];
@@ -41,6 +40,7 @@ export default function LRM(){
         };
         
     let getResults = ((results) => {
+        console.log(results);
         return(
             <div className="container results">
                 <p>x̄:&nbsp;{results.xBar}</p>
@@ -58,48 +58,54 @@ export default function LRM(){
         );
     });
 
-    // let results = {
-    //     "xBar": 2.0,
-    //     "yBar": 2.0,
-    //     "beta": -1.0,
-    //     "alpha": 4.0,
-    //     "correlation": -1.0,
-    //     "populationCovariance": -0.6667,
-    //     "sampleCovariance": -1.0,
-    //     "populationVarianceX": 0.6667,
-    //     "populationVarianceY": 0.6667,
-    //     "sampleVarianceX": 1.0,
-    //     "sampleVarianceY": 1.0
-    // }
+    let results = {
+        "xBar": 0,
+        "yBar": -0.24,
+        "beta": 1.7021,
+        "alpha": -1.3464,
+        "correlation": 0.486,
+        "populationCovariance": 0.4536,
+        "sampleCovariance": 0.486,
+        "populationVarianceX": 0.2665,
+        "populationVarianceY": 2.3905,
+        "sampleVarianceX": 0.2855,
+        "sampleVarianceY": 2.5612
+    }
 
     async function getInfo(endpoint, data){
-        console.log("DATA: " + JSON.stringify(data));
         if(!stringIsValid(explanatory) && !stringIsValid(response)) { return "Invalid string."; }
-        const res = await fetch('http://fionncl.pythonanywhere.com' + endpoint, {
-            method: "POST",
-            mode: "no-cors",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: data
-        })
 
-        console.log(res);
-        setResults(res);
+        console.log(data);
+
+        let res = await fetch(('http://fionncl.pythonanywhere.com' + endpoint), {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data)
+        });
+        getResults(res.json());
+        // .then((res) => {
+        //     console.log(res);
+        // }).then((res) => {
+        //     results = res;
+        //     getResults(results);
+        //     console.log(results);
+        // });
     }
 
     function parseData(){
         if(document.getElementById("explanatory") === null || document.getElementById("response") === null ) { return; }
 
-        return JSON.parse(`{"xList": "[${explanatory.split(",").toString()}]","yList": "[${response.split(",").toString()}]"}`)
+        return {
+            "xList": "[" + explanatory.split(",").toString() + "]",
+            "yList": "[" + response.split(",").toString() + "]"
+        }
     }
 
     function updateText(){
         setExplanatory(document.getElementById("explanatory").value);
         setResponse(document.getElementById("response").value);
-
-        console.log("EXPLANATORY: " + explanatory);
-        console.log("RESPONSE: " + response);
     }
 
     // Perhaps maybe doesn't work.

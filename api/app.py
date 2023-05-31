@@ -1,5 +1,5 @@
 from flask import Flask
-# from flask_cors import CORS
+from flask_cors import CORS
 from flask_restful import Resource, Api, reqparse
 import NumberOfSamples as NoS
 import LinearRegressionModel as LRM
@@ -10,7 +10,7 @@ import SampleSize as SS
 
 # creates api app
 app = Flask(__name__)
-# CORS(app, origins=["http://localhost:3000"])
+CORS(app, origins=["http://localhost:3000"])
 api = Api(app)
 
 # Sampling
@@ -23,7 +23,7 @@ class sampleSizeCombinatorics(Resource):
 
         littleN = int(args['littleN'])
         bigN = int(args['bigN'])
-
+ 
         return {
             "orderedNoRep": round(NoS.orderedNoRep(littleN, bigN), 4),
             "unorderedNoRep": round(NoS.unorderedNoRep(littleN, bigN), 4),
