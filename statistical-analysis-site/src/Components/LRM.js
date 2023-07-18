@@ -89,8 +89,9 @@ export default function LRM(){
     async function getInfo(endpoint, data){
         if(!stringIsValid(explanatory) && !stringIsValid(response)) { getResults(null); return "Invalid string."; }
 
-        await fetch(('http://fionncl.pythonanywhere.com' + endpoint), {
+        await fetch(('https://fionncl.pythonanywhere.com' + endpoint), {
             method: "POST",
+            mode: "no-cors",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -131,7 +132,7 @@ export default function LRM(){
     function stringIsValid(string) {
         const list = string.split(",");
         for(let i = 0; i < list.length; i++){
-            if(isNaN(parseFloat(list[i]))) { return false }
+            if(isNaN(parseFloat(list[i]))) { return false; }
         }
         return true;
     }
